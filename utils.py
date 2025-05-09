@@ -42,8 +42,11 @@ def calculate_commission(price, category):
 
     elif category == "Chromebook":
         if price <= 40000:
-            return price * 0.005  # 0.50%
+            return price * 0.004  # 0.40%
+        else:
+            return price * 0.006  #0.60% 
 
+    
     elif category == "Accessory":
         return price * 0.01  # 1.00%
 
