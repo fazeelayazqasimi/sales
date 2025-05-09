@@ -1,14 +1,14 @@
 [
     {
         "agent_username": "muneef",
-        "customer_name": "fazeel",
-        "order_number": "1725",
-        "platform": "Website",
-        "product": "Samsung A15",
-        "imea": "892734982739",
-        "price": 46000.0,
-        "commission": 138.0,
-        "proof_image": "1725_fazeel.jpg",
-        "datetime": "2025-05-09 00:41:34"
+        "customer_name": "hamzaa",
+        "order_number": "17234",
+        "platform": "Alfamall",
+        "product": "Hp G40 g5",
+        "imea": "S/N 74683272897",
+        "price": 65000.0,
+        "commission": 487.5,
+        "proof_image": "17234_hamzaa.jpg",
+        "datetime": "2025-05-09 15:24:08"
     }
 ]

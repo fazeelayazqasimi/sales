@@ -24,13 +24,27 @@ def validate_login(username, password):
             return agent
     return None
 
-def calculate_commission(price):
-    if price <= 40000:
-        return price * 0.005
-    elif 40001 <= price <= 80000:
-        return price * 0.003
-    elif 80001 <= price <= 150000:
-        return price * 0.002
-    else:
-        return price * 0.001
+# Function to calculate commission
+def calculate_commission(price, category):
+    if category == "Mobile":
+        if price <= 80000:
+            return price * 0.003  # 0.30%
+        elif 80001 <= price <= 150000:
+            return price * 0.002  # 0.20%
+        else:
+            return price * 0.001  # 0.10%
 
+    elif category == "Laptop":
+        if price <= 40000:
+            return price * 0.005  # 0.50%
+        else:
+            return price * 0.0075  #0.075% 
+
+    elif category == "Chromebook":
+        if price <= 40000:
+            return price * 0.005  # 0.50%
+
+    elif category == "Accessory":
+        return price * 0.01  # 1.00%
+
+    return 0

@@ -29,15 +29,17 @@ def logout_button():
         st.rerun()
 
 def display_sales(sales):
-    for i, s in enumerate(sales):
-        with st.expander(f"{s['customer_name']} | {s['product']} | Rs {s['price']}"):
-            st.write(f"Order #: {s['order_number']}")
-            st.write(f"Platform: {s['platform']}")
-            st.write(f"IMEA: {s['imea']}")
-            st.write(f"Commission: Rs {s['commission']:.2f}")
-            st.write(f"Date: {s['datetime']}")
-            if st.button(f"View Image - {i}"):
-                st.image(s["proof_image"], use_container_width=True)
+    for idx, s in enumerate(sales, start=1):
+        with st.expander(f"{s['customer_name']} || Rs {s['price']}"):
+            st.write(f"**Agent Name:** {s['agent_username']}")
+            st.write(f"**Product Name:** {s['product']}")
+            st.write(f"**Order #:** {s['order_number']}")
+            st.write(f"**Platform:** {s['platform']}")
+            st.write(f"**IMEA:** {s['imea']}")
+            st.write(f"**Commission:** Rs {s['commission']:.2f}")
+            st.write(f"**Date:** {s['datetime']}")
+            st.image(s["proof_image"], caption=f"View Image - {idx}")
+
 
 def agent_dashboard(agent):
     st.sidebar.image("salamtec_logo.webp", use_container_width=150)
@@ -59,14 +61,14 @@ def agent_dashboard(agent):
         product = st.text_input("Product Detail")
         imea = st.text_input("IMEA")
         price = st.number_input("Price", min_value=0.0)
-        category = st.selectbox("Category", ["Mobile", "Chromebook", "Accessory"])
+        category = st.selectbox("Category", ["Mobile", "Laptop", "Chromebook", "Accessory"])
         proof_image = st.file_uploader("Upload Sale Proof (Image)", type=["jpg", "jpeg", "png"])
 
         if st.button("Submit"):
             if proof_image is None:
                 st.error("Please upload an image as proof of sale.")
             else:
-                commission = calculate_commission(price)
+                commission = calculate_commission(price, category)
         # Clean filename (no spaces or special chars)
                 safe_customer = customer_name.replace(" ", "_").replace("/", "_")
                 safe_order = order_number.replace(" ", "_").replace("/", "_")
